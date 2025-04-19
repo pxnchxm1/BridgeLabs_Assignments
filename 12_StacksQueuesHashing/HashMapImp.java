@@ -3,8 +3,8 @@ import java.util.LinkedList;
 public class HashMapImp{
     public static class HashMap<K,V>{
         class Node{
-            K key;
-            V value;
+            K key;//int i
+            V value;// string j
             public Node(K key, V value) {
                 this.key = key;
                 this.value = value;
@@ -12,7 +12,7 @@ public class HashMapImp{
         }
         public int nodesize;
         public int bucketSize; 
-        public  LinkedList<Node>[] map ;
+        public  LinkedList<Node>[] map;
         @SuppressWarnings("unchecked")
         public HashMap() {
             this.bucketSize = 4;
@@ -26,7 +26,7 @@ public class HashMapImp{
             return (Math.abs(h) % bucketSize) ;
         }
         private int searchInList(K key, int bi){
-            LinkedList<Node> l = map[bi];
+            LinkedList<Node> l = map[bi]; 
             for(int i=0;i<l.size();i++){
                 if(l.get(i).key.equals(key)){
                     return i ;
@@ -36,7 +36,6 @@ public class HashMapImp{
         }
         @SuppressWarnings("unchecked")
         public void resizeBucket(){
-            
             LinkedList<Node> oldBucket[] = map;
             map = new LinkedList[bucketSize*2];
             bucketSize = bucketSize*2;
